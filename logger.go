@@ -4,6 +4,7 @@ import (
 	"github.com/sirupsen/logrus"
 	"gopkg.in/natefinch/lumberjack.v2"
 	"regexp"
+	"runtime"
 )
 
 var Log = logrus.New()
@@ -24,8 +25,6 @@ func (f *CustomFormatter) Format(entry *logrus.Entry) ([]byte, error) {
 }
 
 func Init(filename string) {
-	Log.SetReportCaller(true)
-
 	// Create a custom formatter with sensitive fields to mask
 	formatter := &CustomFormatter{
 		FieldNames: []string{
@@ -60,4 +59,13 @@ func Init(filename string) {
 		MaxAge:     30,   // Max number of days to retain old log files
 		Compress:   true, // Whether to compress the rotated log files
 	})
+}
+
+// Helper function to get the caller's file and line number
+func getCaller() (string, int) {
+	_, file, line, ok := runtime.Caller(2) // Adjust the caller depth based on the function call stack
+	if !ok {
+		return "", 0
+	}
+	return file, line
 }

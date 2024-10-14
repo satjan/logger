@@ -1,18 +1,18 @@
-# Elastic connect package
+# Logger pkg
 
 ## Installation
 
 Use go get.
 
-	go get github.com/satjan/elastic-connect
+	go get github.com/satjan/logger
 
 Then import the package into your own code.
 
-	import "github.com/satjan/elastic-connect"
+	import "github.com/satjan/logger"
 
 ## Usage and documentation
 
-[see examples](https://github.com/satjan/elastic-connect/tree/main/_examples)
+[see examples](https://github.com/satjan/logger/tree/main/_examples)
 
 ## Authors
 - [Satjan](https://github.com/satjan)

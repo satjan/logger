@@ -9,4 +9,5 @@ func main() {
 	logger.Init(fmt.Sprintf("%s/main.log", "."))
 	logger.Error("error message")
 	logger.Info("info message")
+	logger.WithCaller().WithField("key", "value").Info("info message")
 }

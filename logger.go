@@ -61,11 +61,22 @@ func Init(filename string) {
 	})
 }
 
-// Helper function to get the caller's file and line number
-func getCaller() (string, int) {
-	_, file, line, ok := runtime.Caller(2) // Adjust the caller depth based on the function call stack
+// Helper function to get the true caller's file, line, and function name
+func getCaller() (string, int, string) {
+	pc, file, line, ok := runtime.Caller(3)
 	if !ok {
-		return "", 0
+		return "", 0, ""
 	}
-	return file, line
+	funcName := runtime.FuncForPC(pc).Name()
+	return file, line, funcName
+}
+
+// WithCaller adds file, line, and function name information to the log entry
+func WithCaller() *logrus.Entry {
+	file, line, funcName := getCaller()
+	return Log.WithFields(logrus.Fields{
+		"file": file,
+		"line": line,
+		"func": funcName,
+	})
 }

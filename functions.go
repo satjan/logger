@@ -5,172 +5,100 @@ import (
 )
 
 func Tracef(format string, args ...interface{}) {
-	file, line := getCaller()
-	Log.WithField("file", file).
-		WithField("line", line).
-		Logf(logrus.TraceLevel, format, args...)
+	WithCaller().Logf(logrus.TraceLevel, format, args...)
 }
 
 func Debugf(format string, args ...interface{}) {
-	file, line := getCaller()
-	Log.WithField("file", file).
-		WithField("line", line).
-		Logf(logrus.DebugLevel, format, args...)
+	WithCaller().Logf(logrus.DebugLevel, format, args...)
 }
 
 func Infof(format string, args ...interface{}) {
-	file, line := getCaller()
-	Log.WithField("file", file).
-		WithField("line", line).
-		Logf(logrus.InfoLevel, format, args...)
+	WithCaller().Logf(logrus.InfoLevel, format, args...)
 }
 
 func Warnf(format string, args ...interface{}) {
-	file, line := getCaller()
-	Log.WithField("file", file).
-		WithField("line", line).
-		Logf(logrus.WarnLevel, format, args...)
+	WithCaller().Logf(logrus.WarnLevel, format, args...)
 }
 
 func Warningf(format string, args ...interface{}) {
-	file, line := getCaller()
-	Log.WithField("file", file).
-		WithField("line", line).
-		Warnf(format, args...)
+	WithCaller().Warnf(format, args...)
 }
 
 func Errorf(format string, args ...interface{}) {
-	file, line := getCaller()
-	Log.WithField("file", file).
-		WithField("line", line).
-		Logf(logrus.ErrorLevel, format, args...)
+	WithCaller().Logf(logrus.ErrorLevel, format, args...)
 }
 
 func Fatalf(format string, args ...interface{}) {
-	file, line := getCaller()
-	Log.WithField("file", file).
-		WithField("line", line).
-		Logf(logrus.FatalLevel, format, args...)
+	WithCaller().Logf(logrus.FatalLevel, format, args...)
 	Log.Exit(1)
 }
 
 func Panicf(format string, args ...interface{}) {
-	file, line := getCaller()
-	Log.WithField("file", file).
-		WithField("line", line).
-		Logf(logrus.PanicLevel, format, args...)
+	WithCaller().Logf(logrus.PanicLevel, format, args...)
 }
 
 func Trace(args ...interface{}) {
-	file, line := getCaller()
-	Log.WithField("file", file).
-		WithField("line", line).
-		Log(logrus.TraceLevel, args...)
+	WithCaller().Log(logrus.TraceLevel, args...)
 }
 
 func Debug(args ...interface{}) {
-	file, line := getCaller()
-	Log.WithField("file", file).
-		WithField("line", line).
-		Log(logrus.DebugLevel, args...)
+	WithCaller().Log(logrus.DebugLevel, args...)
 }
 
 func Info(args ...interface{}) {
-	file, line := getCaller()
-	Log.WithField("file", file).
-		WithField("line", line).
-		Log(logrus.InfoLevel, args...)
+	WithCaller().Log(logrus.InfoLevel, args...)
 }
 
 func Warn(args ...interface{}) {
-	file, line := getCaller()
-	Log.WithField("file", file).
-		WithField("line", line).
-		Log(logrus.WarnLevel, args...)
+	WithCaller().Log(logrus.WarnLevel, args...)
 }
 
 func Warning(args ...interface{}) {
-	file, line := getCaller()
-	Log.WithField("file", file).
-		WithField("line", line).
-		Warn(args...)
+	WithCaller().Warn(args...)
 }
 
 func Error(args ...interface{}) {
-	file, line := getCaller()
-	Log.WithField("file", file).
-		WithField("line", line).
-		Log(logrus.ErrorLevel, args...)
+	WithCaller().Log(logrus.ErrorLevel, args...)
 }
 
 func Fatal(args ...interface{}) {
-	file, line := getCaller()
-	Log.WithField("file", file).
-		WithField("line", line).
-		Log(logrus.FatalLevel, args...)
+	WithCaller().Log(logrus.FatalLevel, args...)
 	Log.Exit(1)
 }
 
 func Panic(args ...interface{}) {
-	file, line := getCaller()
-	Log.WithField("file", file).
-		WithField("line", line).
-		Log(logrus.PanicLevel, args...)
+	WithCaller().Log(logrus.PanicLevel, args...)
 }
 
 func Traceln(args ...interface{}) {
-	file, line := getCaller()
-	Log.WithField("file", file).
-		WithField("line", line).
-		Logln(logrus.TraceLevel, args...)
+	WithCaller().Logln(logrus.TraceLevel, args...)
 }
 
 func Debugln(args ...interface{}) {
-	file, line := getCaller()
-	Log.WithField("file", file).
-		WithField("line", line).
-		Logln(logrus.DebugLevel, args...)
+	WithCaller().Logln(logrus.DebugLevel, args...)
 }
 
 func Infoln(args ...interface{}) {
-	file, line := getCaller()
-	Log.WithField("file", file).
-		WithField("line", line).
-		Logln(logrus.InfoLevel, args...)
+	WithCaller().Logln(logrus.InfoLevel, args...)
 }
 
 func Warnln(args ...interface{}) {
-	file, line := getCaller()
-	Log.WithField("file", file).
-		WithField("line", line).
-		Logln(logrus.WarnLevel, args...)
+	WithCaller().Logln(logrus.WarnLevel, args...)
 }
 
 func Warningln(args ...interface{}) {
-	file, line := getCaller()
-	Log.WithField("file", file).
-		WithField("line", line).
-		Warnln(args...)
+	WithCaller().Warnln(args...)
 }
 
 func Errorln(args ...interface{}) {
-	file, line := getCaller()
-	Log.WithField("file", file).
-		WithField("line", line).
-		Logln(logrus.ErrorLevel, args...)
+	WithCaller().Logln(logrus.ErrorLevel, args...)
 }
 
 func Fatalln(args ...interface{}) {
-	file, line := getCaller()
-	Log.WithField("file", file).
-		WithField("line", line).
-		Logln(logrus.FatalLevel, args...)
+	WithCaller().Logln(logrus.FatalLevel, args...)
 	Log.Exit(1)
 }
 
 func Panicln(args ...interface{}) {
-	file, line := getCaller()
-	Log.WithField("file", file).
-		WithField("line", line).
-		Logln(logrus.PanicLevel, args...)
+	WithCaller().Logln(logrus.PanicLevel, args...)
 }
